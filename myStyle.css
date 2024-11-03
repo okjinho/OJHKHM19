@@ -1,0 +1,794 @@
+html, body {
+    margin: 0;
+    height: 14800px; /* Set to 1200vh to restrict the scrolling */
+    overflow: auto;
+    -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+#pageName {
+    color: white;
+    text-align: center;
+    font-size: 20px;
+}
+
+.frontImage {
+    width: 100%;
+    position: relative;
+    z-index: 2000;
+    pointer-events: none;
+    transition: opacity 1s ease;
+    opacity: 1;
+    aspect-ratio: 1920 / 1080;
+}
+
+.frontImage img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.blackOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 1);
+    z-index: 1500;
+    transition: opacity 1s ease;
+    opacity: 1;
+}
+
+.blackBox1 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 1);
+    z-index: 1;
+}
+
+.blackOverlay.hidden {
+    opacity: 0;
+}
+
+.frontImage01 {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    z-index: 2;
+}
+
+.frontImage02 {
+    width: 100%;
+    height: 150%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.frontImage03 {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+
+.frontImage.hidden {
+    opacity: 0;
+}
+
+#contents {
+    width: 100%;
+    height: 14800px;
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+}
+
+#content01 {
+    background-color: rgb(175, 0, 0);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+/*1페이지*/
+
+#Page01_Font_01 {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: -12vh;
+    left: 0%;
+    transform: translate( 0%, 0%);
+    z-index: 5;
+    pointer-events: none;
+}
+
+#Page_01_Font_02 {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: -20vh;
+    left: -2%;
+    transform: translate(0%, 0%);
+    z-index: 5;
+    pointer-events: none;
+}
+
+#Page_01_Font_03 {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: -15vh;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    z-index: 5;
+    pointer-events: none;
+}
+
+@keyframes inkExpand {
+    from {
+        transform: scale(0) translate(50%, -50%); /* 우상단에서 시작, 좌측 50% 이동 */
+        opacity: 0;
+    }
+    to {
+        transform: scale(1) translate(-50%, 0); /* 좌측 50% 이동 후 화면을 꽉 채움 */
+        opacity: 1;
+    }
+}
+
+#Page_01_Ink_01 {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    z-index: 4;
+    pointer-events: none;
+    opacity: 0;
+}
+
+#Page_01_Ink_01.expand {
+    animation: inkExpand 0.2s ease forwards; /* 1초 동안 애니메이션 실행 */
+}
+
+
+
+/* 2페이지 */
+/* page3 텍스트 컨테이너의 부모 요소에 기준 위치 설정 */
+#Page_02 {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* 화면 높이 100% */ /* 부모 컨테이너가 위치 기준이 되도록 설정 */
+    display: flex;
+}
+
+/* page3 중앙 텍스트 스타일 */
+#Page_02_Text_Centered {
+    position: absolute; /* 부모 요소를 기준으로 위치 고정 */
+    top: 3000px; /* Page_02_Text_02와 동일한 top 값 */
+    left: 50%; /* 부모 너비의 50% 지점 */
+    transform: translate(-50%, 80%); /* 수평 중앙 정렬 */
+    text-align: left;
+    width: 60%; /* 부모 너비의 60% */
+    max-width: 1700px;
+    z-index: 8;
+    pointer-events: none;
+}
+
+#Page_02_Text_Centered h1 {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 1.3vw; /* 뷰포트 너비에 따라 반응형 글씨 크기 */
+    color: rgb(255, 255, 255);
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* 작은 화면에서 글씨 및 박스 크기 추가 조정 */
+@media (max-width: 768px) {
+    #Page_03_Text_Centered {
+        width: 80vw; /* 좁은 화면에서는 더 넓게 설정 */
+        height: 80vw;
+        padding: 3vh 3vw;
+    }
+
+    #Page_03_Text_Centered h1 {
+        font-size: 4vw;
+    }
+}
+
+.top-spacing {
+    margin-top: 20px; /* 원하는 상단 여백 */
+    display: inline-block; /* 여백이 적용되도록 인라인 요소를 블록 요소로 변경 */
+}
+
+.highlight {
+    color: rgb(217, 0, 255); /* 원하는 색상 */
+    font-weight: bold; /* 강조 효과를 위해 선택적으로 추가 */
+}
+
+/* 이미지 */
+#Page_02_Text_02 {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 3000px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 6;
+    pointer-events: none;
+}
+
+/* 이미지 */
+#Page_02_Ink_01 {
+    width: 50%;
+    height: auto;
+    position: absolute;
+    top: 2700px;
+    left: 50%;
+    transform: translate(0%, 0%);
+    z-index: 5;
+    pointer-events: none;
+}
+
+#Page_02_Ink_02 {
+    width: 25%;
+    height: auto;
+    position: absolute;
+    top: 3000px;
+    left: 0%;
+    transform: translate(-200%, -10%);
+    z-index: 5;
+    pointer-events: none;
+}
+
+#Page_02_Ink_03 {
+    width: 40%;
+    height: auto;
+    position: absolute;
+    top: 3700px;
+    left: 0%;
+    transform: translate(-125%, 50%);
+    z-index: 5;
+    pointer-events: none;
+}
+
+/* ink 이미지 애니메이션 */
+@keyframes expandInk {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* 텍스트 애니메이션 */
+@keyframes fadeInText {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+#Page_02_Ink_01,
+#Page_02_Ink_02,
+#Page_02_Ink_03,
+#Page_02_Text_02,
+#Page_02_Text_Centered {
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+
+#Page_02_Photo_01 {
+    width: 15%;
+    height: auto;
+    position: absolute;
+    top: 3000px;
+    left: 8%;
+    transform: translate( 0%, 0%);
+    z-index: 5;
+    pointer-events: none;
+    transform: rotate(15deg);
+}
+
+#Page_02_Photo_02 {
+    width: 15%;
+    height: auto;
+    position: absolute;
+    top: 3800px;
+    left: 80%;
+    transform: translate(0%, 0%);
+    z-index: 5;
+    pointer-events: none;
+    transform: rotate(-10deg);
+}
+
+/*3페이지*/
+
+#Page_03_BackGround_01 {
+    width: 100%;
+    height: auto;
+    position: fixed; /* 4200px부터 고정 */
+    top: 100vh; /* 처음에는 화면 밖에 배치 */
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 5;
+    pointer-events: none;
+    opacity: 0; /* 처음에는 안보이도록 설정 */
+    transition: opacity 1s ease, top 1s ease; /* 부드러운 애니메이션 */
+}
+
+#Page_03_Text_01 {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 5200px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 7;
+    pointer-events: none;
+}
+
+#Page_03_Text_02 {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 5200px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 7;
+    pointer-events: none;
+}
+
+#Page_03_Text_03 {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 5100px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 7;
+    pointer-events: none;
+}
+
+#Page_03_Ink_01 {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 5200px;
+    left: 0%;
+    transform: translate(-50%, 0);
+    z-index: 6;
+    pointer-events: none;
+}
+
+/* Page_03_Ink_01 애니메이션 */
+@keyframes slideExpandInk {
+    from {
+        transform: scaleX(0);
+        transform-origin: left;
+        opacity: 0;
+    }
+    to {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+}
+
+/* Page_03_Ink_01 애니메이션 초기 설정 */
+#Page_03_Ink_01 {
+    transform: scaleX(0); /* 시작 시 크기를 0%로 설정 */
+    transform-origin: left;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+
+/*4번째 페이지*/
+
+
+#Page_04_Text_01 {
+    position: absolute;
+    top: 7500px; /* 부모 기준 위치 */
+    left: 50%;
+    transform: translate(-50%, 39.5%);
+    text-align: left;
+    width: 60vw;
+    max-width: 1700px;
+    padding: 20px;
+    z-index: 8;
+    pointer-events: none;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+#Page_04_Text_01 h1 {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 1.3vw; /* 뷰포트 너비에 따라 반응형 글씨 크기 */
+    color: rgb(255, 255, 255);
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* 작은 화면에서 글씨 및 박스 크기 추가 조정 */
+@media (max-width: 768px) {
+    #Page_04_Text_01 {
+        width: 80vw; /* 좁은 화면에서는 더 넓게 설정 */
+        height: 80vw;
+        padding: 3vh 3vw;
+    }
+
+    #Page_04_Text_01 h1 {
+        font-size: 4vw;
+    }
+}
+
+.top-spacing {
+    margin-top: 20px; /* 원하는 상단 여백 */
+    display: inline-block; /* 여백이 적용되도록 인라인 요소를 블록 요소로 변경 */
+}
+
+.highlight {
+    color: rgb(217, 0, 255); /* 원하는 색상 */
+    font-weight: bold; /* 강조 효과를 위해 선택적으로 추가 */
+}
+
+#Page_04_Text_02 {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 7500px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 7;
+    pointer-events: none;
+    opacity: 0; /* 초기 투명도 설정 */
+    animation-fill-mode: forwards;
+}
+
+/* 이미지 */
+#Page_04_Ink_01 {
+    width: 50%;
+    height: auto;
+    position: absolute;
+    top: 7300px;
+    left: 50%;
+    transform: translate(0%, 0%);
+    z-index: 5;
+    pointer-events: none;
+}
+
+#Page_04_Ink_02 {
+    width: 25%;
+    height: auto;
+    position: absolute;
+    top: 7500px;
+    left: 0%;
+    transform: translate(-200%, -10%);
+    z-index: 5;
+    pointer-events: none;
+}
+
+#Page_04_Ink_03 {
+    width: 40%;
+    height: auto;
+    position: absolute;
+    top: 8200px;
+    left: 0%;
+    transform: translate(-125%, 50%);
+    z-index: 5;
+    pointer-events: none;
+}
+
+/* ink 이미지 애니메이션 */
+@keyframes expandInk {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+#Page_04_Ink_01,
+#Page_04_Ink_02,
+#Page_04_Ink_03
+ {
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+#Page_04_Photo_01 {
+    width: 15%;
+    height: auto;
+    position: absolute;
+    top: 8200px;
+    left: 3%;
+    transform: translate( 0%, 0%);
+    z-index: 5;
+    pointer-events: none;
+    transform: rotate(15deg);
+}
+
+/*5번쨰 페이지*/
+#Page_05_Ink_01 {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 9800px;
+    left: 0%;
+    transform: translate(-50%, 0);
+    z-index: 6;
+    pointer-events: none;
+    transform: scale(0); /* 시작 시 크기를 0%로 설정 */
+    transform-origin: top left;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+@keyframes scaleExpandInk {
+    from {
+        
+        
+transform: scale(0); /* 가로, 세로 모두 0%에서 시작 */
+        opacity: 0;
+    }
+    to {
+        transform: scale(1); /* 가로, 세로 모두 100% */
+        opacity: 1;
+    }
+}
+
+#Page_05_Text_01 {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 9600px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 7;
+    pointer-events: none;
+}
+
+#Page_05_Text_02 {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 9600px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 7;
+    pointer-events: none;
+}
+
+/*6번째 페이지*/
+#Page_06_Ink_01 {
+    width: 50%;
+    height: auto;
+    position: absolute;
+    top: 11700px;
+    left: 50%;
+    transform: translate(0%, 0%);
+    z-index: 5;
+    pointer-events: none;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+#Page_06_Ink_02 {
+    width: 25%;
+    height: auto;
+    position: absolute;
+    top: 13200px;
+    left: 0%;
+    transform: translate( 0%, 0%);
+    z-index: 5;
+    pointer-events: none;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+#Page_06_Ink_03 {
+    width: 40%;
+    height: auto;
+    position: absolute;
+    top: 11500px;
+    left: 0%;
+    transform: translate(0%, 0%);
+    z-index: 5;
+    pointer-events: none;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+#Page_06_Text_01 {
+    position: absolute;
+    top: 12000px; /* 페이지 내 고정 위치 */
+    left: 50%;
+    transform: translate(-50%, 59%);
+    text-align: left;
+    width: 60vw; /* 페이지 너비에 따라 반응형 너비 */
+    max-width: 1700px;
+    padding: 2vh 2vw; /* 텍스트 박스 안쪽 여백 반응형 설정 */
+    z-index: 8;
+    pointer-events: none;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+#Page_06_Text_01 h1 {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 1.3vw; /* 뷰포트 너비에 따라 반응형 글씨 크기 */
+    color: rgb(255, 255, 255);
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* 작은 화면에서 글씨 및 박스 크기 추가 조정 */
+@media (max-width: 768px) {
+    #Page_06_Text_01 {
+        width: 80vw; /* 좁은 화면에서는 더 넓게 설정 */
+        height: 80vw;
+        padding: 3vh 3vw;
+    }
+
+    #Page_06_Text_01 h1 {
+        font-size: 4vw;
+    }
+}
+
+.top-spacing {
+    margin-top: 20px; /* 원하는 상단 여백 */
+    display: inline-block; /* 여백이 적용되도록 인라인 요소를 블록 요소로 변경 */
+}
+
+.highlight {
+    color: rgb(217, 0, 255); /* 원하는 색상 */
+    font-weight: bold; /* 강조 효과를 위해 선택적으로 추가 */
+}
+
+#Page_06_Text_02 {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 12000px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 7;
+    pointer-events: none;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+
+/*7번째 페이지*/
+
+#Page_07_Text {
+    position: absolute;
+    top: 14300px; /* 페이지 내 고정 위치 */
+    left: 55%;
+    transform: translateX(-50%);
+    text-align: left;
+    width: 60vw; /* 페이지 너비에 따라 반응형 너비 */
+    max-width: 1700px;
+    padding: 2vh 2vw; /* 텍스트 박스 안쪽 여백 반응형 설정 */
+    z-index: 8;
+}
+
+#Page_07_Text h1 {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 1.8vw; /* 뷰포트 너비에 따라 반응형 글씨 크기 */
+    color: rgb(255, 255, 255);
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* 작은 화면에서 글씨 및 박스 크기 추가 조정 */
+@media (max-width: 768px) {
+    #Page_07_Text {
+        width: 80vw; /* 좁은 화면에서는 더 넓게 설정 */
+        height: 80vw;
+        padding: 3vh 3vw;
+    }
+
+    #Page_07_Text h1 {
+        font-size: 4vw;
+    }
+}
+
+
+/* 이미지 및 텍스트 크기 및 위치 조정 */
+#content01 img,
+#Page01_Font_01 img,
+#Page_01_Font_02 img,
+#Page_01_Font_03 img,
+#Page_01_Ink_01 img,
+#Page_02_Text_01 img,
+#Page_02_Text_02 img,
+#Page_02_Ink_01 img,
+#Page_02_Ink_02 img,
+#Page_02_Ink_03 img,
+#Page_02_Photo_01 img,
+#Page_02_Photo_02 img,
+#Page_03_BackGround_01 img,
+#Page_03_Text_01 img,
+#Page_03_Text_02 img,
+#Page_03_Text_03 img,
+#Page_03_Ink_01 img,
+#Page_04_Text_02 img,
+#Page_04_Ink_01 img,
+#Page_04_Ink_02 img,
+#Page_04_Ink_03 img,
+#Page_04_Photo_01 img,
+#Page_05_Ink_01 img,
+#Page_05_Text_01 img,
+#Page_05_Text_02 img,
+#Page_06_Ink_01 img,
+#Page_06_Ink_02 img,
+#Page_06_Ink_03 img,
+#Page_06_Text_02 img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+#Page_01_Ink_01 img {
+    height: auto;
+    width: 100%;
+    object-fit: cover;
+}
+
+#scrollToTop img {
+    width: 250%;
+    height: 250%;
+    object-fit: contain;
+}
+
+#scrollToTop.visible {
+    opacity: 1; /* 스크롤 일정량 내려갔을 때 보이게 설정 */
+}
+
+
+/* 미디어 쿼리: 화면 크기에 따라 반응형 조정 */
+@media (max-width: 768px) {
+    #Page_02_Text_01 {
+        font-size: 4vw;
+        padding: 4vw;
+    }
+}
+
+@media (max-width: 768px) {
+    #Page_04_Text_01 {
+        font-size: 4vw;
+        padding: 4vw;
+    }
+}
